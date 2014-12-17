@@ -33,6 +33,7 @@ trait Injectable extends Wire {
     List[Identifier](typeId[T]) ++ identifiers |>
         (ids => injector getBindings ids flatMap (_.get) map (_.asInstanceOf[T]))
 
+
   protected def injectAll(identifiers: Identifier*)(implicit injector: Injector): List[Any] =
     injector getBindings identifiers.toList flatMap (_.get)
 
