@@ -44,7 +44,7 @@ trait Injectable extends Wire {
     injector getBinding ids flatMap (_.get) map (_.asInstanceOf[T]) getOrElse default
 
   protected def noBindingFound(ids: List[Identifier]) =
-    throw new InjectException(ids map ("  * " +) mkString ("No binding found with following identifiers:\n", "\n", ""))
+    throw new InjectException(ids map ("  * " +) mkString ("No binding found 1 with following identifiers:\n", "\n", ""))
 
   // in case is identifier goes at first
 
