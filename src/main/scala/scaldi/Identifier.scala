@@ -31,7 +31,7 @@ trait CanBeIdentifier[T] {
 
 object CanBeIdentifier {
   implicit object StringCanBeIdentifier extends CanBeIdentifier[String] {
-    def toIdentifier(str: String) = StringIdentifier(str + 1)
+    def toIdentifier(str: String) = StringIdentifier(str)
   }
 
   implicit object SymbolCanBeIdentifier extends CanBeIdentifier[Symbol] {
