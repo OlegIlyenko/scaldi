@@ -17,11 +17,11 @@ trait Injectable extends Wire {
                                  (implicit injector: Injector, tt: TypeTag[T], nn: NotNothing[T]): () => T =
     () => inject(constraints)(injector, tt, nn)
 
-  protected def inject[T](implicit injector: Injector, tt: TypeTag[T], nn: NotNothing[T]): T =
+  protected def inject1[T](implicit injector: Injector, tt: TypeTag[T], nn: NotNothing[T]): T =
     List[Identifier](typeId[T]) |>
         (ids => injectWithDefault[T](injector, noBindingFound(ids))(ids))
 
-  protected def inject[T](constraints: => InjectConstraints[T])
+  protected def inject1[T](constraints: => InjectConstraints[T])
                          (implicit injector: Injector, tt: TypeTag[T], nn: NotNothing[T]): T =
     List(typeId[T]) ++ constraints.identifiers |>
       (ids => injectWithDefault[T](injector, constraints.default map(_()) getOrElse noBindingFound(ids))(ids))
