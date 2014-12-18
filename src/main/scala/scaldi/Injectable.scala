@@ -23,7 +23,7 @@ trait Injectable extends Wire {
 
 
   //test
-  protected def inject[T](constraints: => InjectConstraints[T])
+  protected def inject222[T](constraints: => InjectConstraints[T])
                          (implicit injector: Injector, tt: TypeTag[T], nn: NotNothing[T]): T =
     List(typeId[T]) ++ constraints.identifiers |>
       (ids => injectWithDefault[T](injector, constraints.default map(_()) getOrElse noBindingFound(ids))(ids))
